@@ -1,1 +1,4 @@
-demo
+```shell
+npm i
+npm start
+```
