@@ -7,7 +7,7 @@ module.exports = {
       sources: ['S1', 'S2'],
     },
     target2: {
-      sources: ['S2', 'S3'],
+      sources: ['S3', 'S5'],
     },
   },
   cpu1: {
