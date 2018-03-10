@@ -15,7 +15,6 @@ const targetSourcesList = Object.values(_.groupBy(sources, 'target'));
 const targetResultSources = targetSourcesList.map(targetSources => {
   const cpuGroups = Object.values(_.groupBy(targetSources, 'cpu'));
   const commonSources = _.intersectionBy.apply(null, [...cpuGroups, 'src']);
-  // cpuGroups.forEach(g => console.log(commonSources, g, _.differenceBy(g, commonSources, 'src')));
   const cpuOnlySources = cpuGroups
     .map(groupSources => _.differenceBy(groupSources, commonSources, 'src'))
     .filter(groupSources => groupSources.length);
@@ -35,3 +34,27 @@ targetResultSources.forEach(({target, commonSources, cpuOnlySources}) => {
     list.forEach(s => console.log(`    ${s.src}`));
   });
 });
+
+/*
+#RESULT
+
+if target == target0:
+  S0
+  if cpu == cpu0:
+    S1
+    S2
+  if cpu == cpu1:
+    S3
+    S4
+    S7
+if target == target1:
+  if cpu == cpu0:
+    S1
+    S2
+  if cpu == cpu1:
+    S0
+    S4
+if target == target2:
+  S3
+  S5
+*/
